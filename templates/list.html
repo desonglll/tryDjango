@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block a %}
+    <ul>
+        {% for item in obj %}
+            <li>
+                <a href="{% url "product_detail" %}?id={{ item.id }}">
+                    {{ item.title }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
