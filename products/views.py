@@ -1,6 +1,6 @@
 from django.http import HttpResponseRedirect
+from django.http import JsonResponse
 from django.shortcuts import render
-
 from .models import Product
 
 
@@ -29,13 +29,6 @@ def product_detail_view(request):
     context = {'obj': obj}
     return render(request, "product/detail.html", context)
 
-
-# views.py
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
-
-from django.http import JsonResponse
 
 def get(request):
     # 获取数据的逻辑

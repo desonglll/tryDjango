@@ -25,6 +25,6 @@ urlpatterns = [
     path("product/", product_detail_view, name="product_detail"),
     path("list/", list_view, name="list"),
     path("contact/", contact_view, name="contact"),
-    path('api/data/', get, name='api_get'),
+    path('api/all_product/', get, name='api_get'),
     path("", home_view, name="home"),
 ]
