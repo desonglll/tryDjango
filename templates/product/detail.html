@@ -8,5 +8,10 @@
         {% else %}Description coming soon...
         {% endif %}
     </p>
+    <p>
+        {{ obj.released_date|date:"D, d M Y" }}
+    </p>
     {{ obj.price }}
+
 {% endblock %}
+

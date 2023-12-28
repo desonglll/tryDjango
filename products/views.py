@@ -28,3 +28,26 @@ def product_detail_view(request):
     # }
     context = {'obj': obj}
     return render(request, "product/detail.html", context)
+
+
+# views.py
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+
+from django.http import JsonResponse
+
+def get(request):
+    # 获取数据的逻辑
+    items = Product.objects.all()
+    data = []
+    for i in items:
+        print(i.id, i.title, i.description, i.price)
+        dict_item = {
+            'id': i.id,
+            'title': i.title,
+            'description': i.description,
+            'price': i.price
+        }
+        data.append(dict_item)
+    return JsonResponse(data, safe=False)
