@@ -2,6 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import Button from "@mui/material/Button";
 import React, { useEffect, useState } from "react";
+import { ListItem, List, ListItemText, Divider } from "@mui/material";
 
 function App() {
   const [data, setData] = useState(null);
@@ -11,7 +12,7 @@ function App() {
   }, []);
   const fetchData = async () => {
     try {
-      const response = await fetch("http://localhost:8000/api/data/");
+      const response = await fetch("/api/data/");
       console.log("Full Response:", response);
       const jsonData = await response.json();
       console.log("Parsed JSON:", jsonData);
@@ -28,17 +29,20 @@ function App() {
         Click me
       </Button>
       <h1>Your React Component</h1>
-      {data && (
-        <ul>
-          {data.map((item) => (
-            <li key={item.id}>
-              <strong>Title:</strong> {item.title},{" "}
-              {/* <strong>Description:</strong> {item.description},{" "}
+      <List component="nav" aria-label="mailbox folders">
+        {data && (
+          <ul>
+            {data.map((item) => (
+              <ListItem button divider>
+                <strong>Title:</strong> {item.title},{" "}
+                <strong>Description:</strong> {item.description},{" "}
+                {/* <strong>Description:</strong> {item.description},{" "}
               <strong>Price:</strong> {item.price} */}
-            </li>
-          ))}
-        </ul>
-      )}
+              </ListItem>
+            ))}
+          </ul>
+        )}
+      </List>
     </div>
   );
 }
