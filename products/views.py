@@ -40,6 +40,9 @@ def get(request):
             'id': i.id,
             'title': i.title,
             'description': i.description,
+            'featured': i.featured,
+            "summary": i.summary,
+            "released_date": i.released_date,
             'price': i.price
         }
         data.append(dict_item)
