@@ -2,12 +2,23 @@ from django.http import HttpResponseRedirect
 from django.http import JsonResponse
 from django.shortcuts import render
 from .models import Product
+from .forms import ProductForm
 
 
 def print_all_product_id():
     models = Product.objects.all()
     for obj in models:
         print(obj.id)
+
+
+def product_create_view(request):
+    form = ProductForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        form = ProductForm()  # rerender form to empty
+
+    context = {'form': form}
+    return render(request, "products/product_create.html", context)
 
 
 # Create your views here.
